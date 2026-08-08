@@ -1,0 +1,1126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>deeniBox - Islamic Learning Products for Kids</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ===== CSS VARIABLES & RESET ===== */
+        :root {
+            --bg-main: #FAFAF8;
+            --surface: #FFFFFF;
+            --text-dark: #121826;
+            --text-muted: #64748B;
+            --brand-green: #00A843;
+            --brand-green-dark: #008A37;
+            --brand-green-light: #E6F7ED;
+            --accent-yellow: #FFC72C;
+            --dark-card-bg: #0F172A;
+            --dark-inner-bg: #1E293B;
+            --border-light: rgba(0, 0, 0, 0.08);
+            --radius-xl: 32px;
+            --radius-lg: 24px;
+            --radius-md: 16px;
+            --radius-sm: 8px;
+            --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.04);
+            --shadow-hover: 0 20px 40px rgba(0, 168, 67, 0.12);
+            --transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ===== HEADER / NAV ===== */
+        header {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: calc(100% - 48px);
+            max-width: 1200px;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--border-light);
+            border-radius: 99px;
+            padding: 10px 28px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo-img {
+            height: 38px;
+            width: auto;
+            display: block;
+            object-fit: contain;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--brand-green);
+        }
+
+        .btn-nav {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--brand-green);
+            color: #ffffff;
+            padding: 10px 22px;
+            border-radius: 99px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.9rem;
+            transition: var(--transition);
+            box-shadow: 0 4px 12px rgba(0, 168, 67, 0.25);
+        }
+
+        .btn-nav:hover {
+            background: var(--brand-green-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 168, 67, 0.35);
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            padding-top: 150px;
+            padding-bottom: 40px;
+            text-align: center;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 18px;
+            background: var(--brand-green-light);
+            color: var(--brand-green-dark);
+            font-size: 0.85rem;
+            font-weight: 800;
+            border-radius: 99px;
+            margin-bottom: 20px;
+            letter-spacing: 0.02em;
+        }
+
+        .hero-title {
+            font-size: clamp(2.2rem, 4vw, 3.5rem);
+            font-weight: 900;
+            line-height: 1.15;
+            letter-spacing: -0.03em;
+            max-width: 850px;
+            margin: 0 auto 16px;
+        }
+
+        .hero-title span {
+            color: var(--brand-green);
+        }
+
+        .hero-desc {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            max-width: 620px;
+            margin: 0 auto 28px;
+            font-weight: 500;
+        }
+
+        /* ===== MAIN FEATURED PRODUCT ===== */
+        .product-showcase {
+            padding: 20px 0 60px;
+        }
+
+        .product-card {
+            background: var(--surface);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border-light);
+            padding: 40px;
+            box-shadow: var(--shadow-soft);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            align-items: start;
+        }
+
+        .gallery-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .main-image-wrapper {
+            position: relative;
+            width: 100%;
+            height: 380px;
+            background: #F8FAF9;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .main-image-wrapper img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            transition: var(--transition);
+        }
+
+        .nav-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid var(--border-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+            font-weight: bold;
+            color: var(--text-muted);
+            transition: var(--transition);
+            user-select: none;
+            z-index: 5;
+        }
+
+        .nav-arrow:hover {
+            background: var(--surface);
+            color: var(--brand-green);
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12);
+        }
+
+        .nav-arrow.prev { left: 12px; }
+        .nav-arrow.next { right: 12px; }
+
+        .thumbnail-row {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+        }
+
+        .thumb-box {
+            height: 85px;
+            border-radius: var(--radius-md);
+            border: 2px solid transparent;
+            background: #F8FAF9;
+            overflow: hidden;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 4px;
+        }
+
+        .thumb-box img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        .thumb-box:hover {
+            border-color: rgba(0, 168, 67, 0.4);
+        }
+
+        .thumb-box.active {
+            border-color: var(--brand-green);
+        }
+
+        .product-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-title {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--text-dark);
+            margin-bottom: 12px;
+        }
+
+        .product-description {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 24px;
+            font-weight: 500;
+        }
+
+        .feature-checklist {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 28px;
+        }
+
+        .feature-checklist li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .feature-checklist li .check-icon {
+            color: var(--brand-green);
+            font-weight: 900;
+            font-size: 1.1rem;
+        }
+
+        .price-box {
+            background: #F8FAF9;
+            border-radius: var(--radius-md);
+            padding: 18px 24px;
+            margin-bottom: 24px;
+        }
+
+        .price-row {
+            display: flex;
+            align-items: baseline;
+            gap: 12px;
+            margin-bottom: 4px;
+        }
+
+        .price-current {
+            font-size: 2rem;
+            font-weight: 900;
+            color: var(--brand-green);
+        }
+
+        .price-original {
+            font-size: 1.2rem;
+            color: #94A3B8;
+            text-decoration: line-through;
+            font-weight: 600;
+        }
+
+        .price-savings {
+            color: var(--brand-green-dark);
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+
+        .perks-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-bottom: 28px;
+        }
+
+        .perks-list li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+
+        .btn-whatsapp-full {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: var(--brand-green);
+            color: #ffffff;
+            padding: 16px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 1rem;
+            transition: var(--transition);
+            box-shadow: 0 8px 20px rgba(0, 168, 67, 0.25);
+            text-align: center;
+        }
+
+        .btn-whatsapp-full:hover {
+            background: var(--brand-green-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 25px rgba(0, 168, 67, 0.35);
+        }
+
+        /* ===== ALL PRODUCTS CATALOG SECTION ===== */
+        .catalog-section {
+            padding: 80px 0;
+            background: #F4F5F0;
+        }
+
+        .catalog-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+            margin-top: 40px;
+        }
+
+        .catalog-card {
+            background: var(--surface);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border-light);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            box-shadow: var(--shadow-soft);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .catalog-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .card-badge {
+            position: absolute;
+            top: 16px;
+            left: 16px;
+            background: var(--brand-green);
+            color: white;
+            font-size: 0.75rem;
+            font-weight: 800;
+            padding: 4px 12px;
+            border-radius: 99px;
+            z-index: 2;
+        }
+
+        .catalog-img-wrapper {
+            height: 240px;
+            background: #F8FAF9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .catalog-img-wrapper img {
+            max-height: 100%;
+            max-width: 100%;
+            object-fit: contain;
+            transition: var(--transition);
+        }
+
+        .catalog-card:hover .catalog-img-wrapper img {
+            transform: scale(1.05);
+        }
+
+        .catalog-content {
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .catalog-title {
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--text-dark);
+            margin-bottom: 8px;
+        }
+
+        .catalog-desc {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            margin-bottom: 16px;
+            flex-grow: 1;
+        }
+
+        .catalog-price {
+            display: flex;
+            align-items: baseline;
+            gap: 8px;
+            margin-bottom: 18px;
+        }
+
+        .catalog-price .curr {
+            font-size: 1.35rem;
+            font-weight: 900;
+            color: var(--brand-green);
+        }
+
+        .catalog-price .orig {
+            font-size: 0.95rem;
+            color: #94A3B8;
+            text-decoration: line-through;
+            font-weight: 600;
+        }
+
+        .btn-card-order {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: var(--brand-green-light);
+            color: var(--brand-green-dark);
+            padding: 12px;
+            border-radius: var(--radius-sm);
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+
+        .btn-card-order:hover {
+            background: var(--brand-green);
+            color: #ffffff;
+        }
+
+        /* ===== FEATURES SECTION ===== */
+        .features {
+            padding: 80px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 50px;
+        }
+
+        .section-title {
+            font-size: 2.25rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            margin-top: 10px;
+        }
+
+        .grid-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 24px;
+        }
+
+        .card-feature {
+            background: var(--surface);
+            padding: 36px 28px;
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border-light);
+            box-shadow: var(--shadow-soft);
+            transition: var(--transition);
+        }
+
+        .card-feature:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+            border-color: rgba(0, 168, 67, 0.2);
+        }
+
+        .icon-box {
+            width: 52px;
+            height: 52px;
+            border-radius: var(--radius-md);
+            background: var(--brand-green-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        .card-feature h3 {
+            font-size: 1.25rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+            color: var(--text-dark);
+        }
+
+        .card-feature p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            font-weight: 500;
+            line-height: 1.6;
+        }
+
+        /* ===== CONTACT & QUICK ORDER SECTION ===== */
+        .contact-section {
+            padding: 80px 0 100px;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            align-items: center;
+        }
+
+        .contact-info {
+            padding-right: 20px;
+        }
+
+        .badge-pill {
+            display: inline-block;
+            background: #E0E7FF;
+            color: #4F46E5;
+            font-size: 0.8rem;
+            font-weight: 700;
+            padding: 4px 14px;
+            border-radius: 99px;
+            margin-bottom: 16px;
+        }
+
+        .contact-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 12px;
+            color: var(--text-dark);
+        }
+
+        .contact-subtitle {
+            color: var(--text-muted);
+            font-size: 1rem;
+            margin-bottom: 32px;
+            font-weight: 500;
+        }
+
+        .contact-methods {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            margin-bottom: 36px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+        }
+
+        .contact-icon-bg {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .icon-green { background: #DCFCE7; color: #16A34A; }
+        .icon-blue { background: #DBEAFE; color: #2563EB; }
+        .icon-purple { background: #F3E8FF; color: #9333EA; }
+
+        .contact-detail h4 {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 2px;
+        }
+
+        .contact-detail p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            line-height: 1.5;
+            font-weight: 500;
+        }
+
+        /* Quick Order Card */
+        .quick-order-card {
+            background: var(--dark-card-bg);
+            border-radius: 24px;
+            padding: 40px;
+            color: white;
+            box-shadow: 0 20px 40px rgba(15, 23, 42, 0.15);
+        }
+
+        .quick-order-card h3 {
+            font-size: 1.75rem;
+            font-weight: 800;
+            margin-bottom: 12px;
+        }
+
+        .quick-order-card p {
+            color: #94A3B8;
+            font-size: 0.95rem;
+            margin-bottom: 28px;
+            line-height: 1.5;
+        }
+
+        .message-box-preview {
+            background: var(--dark-inner-bg);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 28px;
+        }
+
+        .message-box-preview h4 {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: #F8FAFC;
+            margin-bottom: 16px;
+        }
+
+        .message-box-preview ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .message-box-preview li {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 0.88rem;
+            color: #CBD5E1;
+            font-weight: 500;
+        }
+
+        .message-box-preview li .check {
+            color: var(--brand-green);
+            font-weight: bold;
+        }
+
+        .btn-order-whatsapp-card {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: var(--brand-green);
+            color: white;
+            width: 100%;
+            padding: 16px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .btn-order-whatsapp-card:hover {
+            background: var(--brand-green-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 168, 67, 0.3);
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            padding: 40px 0;
+            border-top: 1px solid var(--border-light);
+            text-align: center;
+            background: var(--surface);
+        }
+
+        .footer-wrap {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .footer-text {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 992px) {
+            .product-card,
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            .catalog-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .contact-info {
+                padding-right: 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hero-title { font-size: 2rem; }
+            .catalog-grid { grid-template-columns: 1fr; }
+            .main-image-wrapper { height: 280px; }
+            .thumb-box { height: 65px; }
+            .quick-order-card { padding: 28px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header / Navbar -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#">
+                    <img src="deenibox LOGO.jpeg" alt="deeniBox Logo" class="logo-img">
+                </a>
+
+                <ul class="nav-links">
+                    <li><a href="#product">Featured</a></li>
+                    <li><a href="#products-catalog">Our Products</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+
+                <a href="https://wa.me/919611033411" target="_blank" class="btn-nav">
+                    Order via WhatsApp
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <div class="hero-badge">✨ Interactive Islamic Learning</div>
+                <h1 class="hero-title">Inspire your child's journey with <span>deeniBox</span></h1>
+                <p class="hero-desc">Discover our range of tactile laptops, tablets, and prayer mats designed to make learning Duas, Quran, and Salah engaging for kids.</p>
+            </div>
+        </section>
+
+        <!-- Main Featured Product Section -->
+        <section id="product" class="product-showcase">
+            <div class="container">
+                <div class="product-card">
+                    
+                    <!-- Left Column: Gallery Slider -->
+                    <div class="gallery-container">
+                        <div class="main-image-wrapper">
+                            <button class="nav-arrow prev" onclick="changeSlide(-1)">&#10094;</button>
+                            <img id="mainDisplayImage" src="laptop-1.jpeg" alt="deeniBox Laptop View">
+                            <button class="nav-arrow next" onclick="changeSlide(1)">&#10095;</button>
+                        </div>
+
+                        <div class="thumbnail-row">
+                            <div class="thumb-box active" onclick="setSlide(0, this)">
+                                <img src="laptop-1.jpeg" alt="Laptop View 1">
+                            </div>
+                            <div class="thumb-box" onclick="setSlide(1, this)">
+                                <img src="laptop-box.jpeg" alt="Laptop Box Packaging">
+                            </div>
+                            <div class="thumb-box" onclick="setSlide(2, this)">
+                                <img src="laptop-2.jpeg" alt="Keyboard Zoom">
+                            </div>
+                            <div class="thumb-box" onclick="setSlide(3, this)">
+                                <img src="laptop-3.jpeg" alt="Interactive Laptop Full View">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Column: Details & Pricing -->
+                    <div class="product-info">
+                        <h2 class="product-title">Yamani Laptop</h2>
+                        <p class="product-description">
+                            Experience the perfect blend of performance and portability with our premium Yamani Laptop. Designed for young learners, this laptop delivers exceptional Islamic learning in a sleek, lightweight package.
+                        </p>
+
+                        <ul class="feature-checklist">
+                            <li><span class="check-icon">&#10003;</span> High-quality educational content</li>
+                            <li><span class="check-icon">&#10003;</span> Durable and kid-friendly design</li>
+                            <li><span class="check-icon">&#10003;</span> Clear audio pronunciation</li>
+                            <li><span class="check-icon">&#10003;</span> Battery operated (included)</li>
+                            <li><span class="check-icon">&#10003;</span> Perfect gift for kids aged 3 and above</li>
+                            <li><span class="check-icon">&#10003;</span> Encourages Islamic learning</li>
+                        </ul>
+
+                        <div class="price-box">
+                            <div class="price-row">
+                                <span class="price-current">₹2,400</span>
+                                <span class="price-original">₹2,999</span>
+                            </div>
+                            <div class="price-savings">You Save: ₹599</div>
+                        </div>
+
+                        <ul class="perks-list">
+                            <li><span>💳</span> Pay on Delivery available</li>
+                            <li><span>🔄</span> Easy 14 days return & exchange available</li>
+                            <li><span>🚚</span> Usually delivered in 5-7 days</li>
+                        </ul>
+
+                        <a href="https://wa.me/919611033411?text=Hi%2C%20I%20want%20to%20order%20the%20Yamani%20Laptop." target="_blank" class="btn-whatsapp-full">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2C6.48 2 2 6.48 2 12c0 1.95.56 3.77 1.53 5.32L2 22l4.82-1.48C8.3 21.47 10.1 22 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm-1 14.5h-1.5v-1.5H11v1.5zm1.5-4.5h-3V7.5h3V12z"/>
+                            </svg>
+                            Order Now on WhatsApp
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- OUR PRODUCTS CATALOG SECTION -->
+        <section id="products-catalog" class="catalog-section">
+            <div class="container">
+                <div class="section-header">
+                    <div class="hero-badge">Explore Collection</div>
+                    <h2 class="section-title">Kids Love Learning With These!</h2>
+                </div>
+
+                <div class="catalog-grid">
+                    
+                    <!-- Product 1: Yamani Laptop -->
+                    <div class="catalog-card">
+                        <span class="card-badge">Bestseller</span>
+                        <div class="catalog-img-wrapper">
+                            <img src="laptop-1.jpeg" alt="Yamani Laptop">
+                        </div>
+                        <div class="catalog-content">
+                            <h3 class="catalog-title">Yamani Laptop</h3>
+                            <p class="catalog-desc">Interactive learning laptop loaded with Surahs, daily Duas, and Arabic letters.</p>
+                            <div class="catalog-price">
+                                <span class="curr">₹2,400</span>
+                                <span class="orig">₹2,999</span>
+                            </div>
+                            <a href="https://wa.me/919611033411?text=Hi%2C%20I%20want%20to%20order%20the%20Yamani%20Laptop." target="_blank" class="btn-card-order">
+                                Order on WhatsApp
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Product 2: Islamic Learning Tab -->
+                    <div class="catalog-card">
+                        <span class="card-badge">New Arrival</span>
+                        <div class="catalog-img-wrapper">
+                            <img src="Tab.jpeg" alt="Islamic Learning Tab">
+                        </div>
+                        <div class="catalog-content">
+                            <h3 class="catalog-title">Islamic Learning Tab</h3>
+                            <p class="catalog-desc">Smart touch tab featuring Surahs, daily Duas, Arabic alphabet, and quiz modes.</p>
+                            <div class="catalog-price">
+                                <span class="curr">₹1,499</span>
+                                <span class="orig">₹1,999</span>
+                            </div>
+                            <a href="https://wa.me/919611033411?text=Hi%2C%20I%20want%20to%20order%20the%20Islamic%20Learning%20Tab." target="_blank" class="btn-card-order">
+                                Order on WhatsApp
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Product 3: Interactive Prayer Mat -->
+                    <div class="catalog-card">
+                        <span class="card-badge">Popular</span>
+                        <div class="catalog-img-wrapper">
+                            <img src="mat.jpeg" alt="Interactive Prayer Mat">
+                        </div>
+                        <div class="catalog-content">
+                            <h3 class="catalog-title">Interactive Prayer Mat</h3>
+                            <p class="catalog-desc">Touch-sensitive educational prayer mat designed to teach kids Salah step-by-step.</p>
+                            <div class="catalog-price">
+                                <span class="curr">₹1,899</span>
+                                <span class="orig">₹2,499</span>
+                            </div>
+                            <a href="https://wa.me/919611033411?text=Hi%2C%20I%20want%20to%20order%20the%20Interactive%20Prayer%20Mat." target="_blank" class="btn-card-order">
+                                Order on WhatsApp
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section id="features" class="features">
+            <div class="container">
+                <div class="section-header">
+                    <div class="hero-badge">Smart & Fun</div>
+                    <h2 class="section-title">Designed for young minds</h2>
+                </div>
+
+                <div class="grid-features">
+                    <div class="card-feature">
+                        <div class="icon-box">📖</div>
+                        <h3>Quran Surahs</h3>
+                        <p>Clear, beautiful audio recitation of essential Surahs and Ayat al-Kursi designed for easy memorization and repeat learning.</p>
+                    </div>
+
+                    <div class="card-feature">
+                        <div class="icon-box">🤲</div>
+                        <h3>Daily Supplications</h3>
+                        <p>Teaches essential everyday duas including waking up, entering and leaving home, the restroom, and the masjid.</p>
+                    </div>
+
+                    <div class="card-feature">
+                        <div class="icon-box">✨</div>
+                        <h3>Faith & Salawat</h3>
+                        <p>Instills fundamental declarations of faith including Kalimat At-Tawheed and sending blessings upon the Prophet ﷺ.</p>
+                    </div>
+
+                    <div class="card-feature">
+                        <div class="icon-box">⌨️</div>
+                        <h3>Tactile Keypad</h3>
+                        <p>Durable Arabic letter buttons and playback controls mapped directly to clear audio clips for hands-on learning.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Us & Quick Order Section -->
+        <section id="contact" class="contact-section">
+            <div class="container">
+                <div class="contact-grid">
+                    
+                    <!-- Left Side: Contact Information -->
+                    <div class="contact-info">
+                        <span class="badge-pill">Get in Touch</span>
+                        <h2 class="contact-title">Contact Us</h2>
+                        <p class="contact-subtitle">Have questions? Reach out to us anytime. We're here to help!</p>
+
+                        <div class="contact-methods">
+                            <!-- Phone / WhatsApp -->
+                            <div class="contact-item">
+                                <div class="contact-icon-bg icon-green">📞</div>
+                                <div class="contact-detail">
+                                    <h4>Phone / WhatsApp</h4>
+                                    <p>+91 96110 33411 (India)<br>+971  (UAE)</p>
+                                </div>
+                            </div>
+
+                            <!-- Website -->
+                            <div class="contact-item">
+                                <div class="contact-icon-bg icon-blue">🌐</div>
+                                <div class="contact-detail">
+                                    <h4>Website</h4>
+                                    <p>www.deenibox.com</p>
+                                </div>
+                            </div>
+
+                            <!-- Shipping -->
+                            <div class="contact-item">
+                                <div class="contact-icon-bg icon-purple">📍</div>
+                                <div class="contact-detail">
+                                    <h4>Shipping</h4>
+                                    <p>Pan India Delivery</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Side: Quick Order Card -->
+                    <div class="quick-order-card">
+                        <h3>Quick Order</h3>
+                        <p>The fastest way to order is via WhatsApp. Click below and send us your details!</p>
+
+                        <div class="message-box-preview">
+                            <h4>Your message will include:</h4>
+                            <ul>
+                                <li><span class="check">&#10003;</span> Choose Product (Laptop / Tab / Mat)</li>
+                                <li><span class="check">&#10003;</span> Your Name & Shipping Address</li>
+                                <li><span class="check">&#10003;</span> Payment Method (COD/Online)</li>
+                            </ul>
+                        </div>
+
+                        <a href="https://wa.me/919611033411?text=Hi%2C%20I%20want%20to%20place%20an%20order." target="_blank" class="btn-order-whatsapp-card">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2C6.48 2 2 6.48 2 12c0 1.95.56 3.77 1.53 5.32L2 22l4.82-1.48C8.3 21.47 10.1 22 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm-1 14.5h-1.5v-1.5H11v1.5zm1.5-4.5h-3V7.5h3V12z"/>
+                            </svg>
+                            Order on WhatsApp Now
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-wrap">
+                <img src="deenibox LOGO.jpeg" alt="deeniBox Logo" class="logo-img" style="height: 32px;">
+                <p class="footer-text">© 2026 deeniBox. Inspiring young hearts with Islamic values.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Gallery Interaction Script -->
+    <script>
+        const galleryImages = [
+            'laptop-1.jpeg',
+            'laptop-box.jpeg',
+            'laptop-2.jpeg',
+            'laptop-3.jpeg'
+        ];
+
+        let currentIndex = 0;
+
+        function updateGalleryDisplay() {
+            const mainImg = document.getElementById('mainDisplayImage');
+            const thumbnails = document.querySelectorAll('.thumb-box');
+
+            mainImg.src = galleryImages[currentIndex];
+
+            thumbnails.forEach((thumb, idx) => {
+                if (idx === currentIndex) {
+                    thumb.classList.add('active');
+                } else {
+                    thumb.classList.remove('active');
+                }
+            });
+        }
+
+        function setSlide(index, element) {
+            currentIndex = index;
+            updateGalleryDisplay();
+        }
+
+        function changeSlide(direction) {
+            currentIndex += direction;
+            if (currentIndex < 0) {
+                currentIndex = galleryImages.length - 1;
+            } else if (currentIndex >= galleryImages.length) {
+                currentIndex = 0;
+            }
+            updateGalleryDisplay();
+        }
+    </script>
+</body>
+</html> 
